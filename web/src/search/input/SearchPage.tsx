@@ -319,7 +319,9 @@ export const SearchPage: React.FunctionComponent<SearchPageProps> = props => {
                 </>
             )}
 
-            {!props.isSourcegraphDotCom && props.showEnterpriseHomePanels && <EnterpriseHomePanels />}
+            {!props.isSourcegraphDotCom && props.showEnterpriseHomePanels && (
+                <EnterpriseHomePanels authenticatedUser={props.authenticatedUser} />
+            )}
         </div>
     )
 }

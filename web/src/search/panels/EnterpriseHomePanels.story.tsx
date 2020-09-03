@@ -11,4 +11,4 @@ const { add } = storiesOf('web/search/panels/EnterpriseHomePanels', module).addP
     chromatic: { viewports: [480, 769, 993, 1200] },
 })
 
-add('Panels', () => <WebStory>{() => <EnterpriseHomePanels />}</WebStory>)
+add('Panels', () => <WebStory>{() => <EnterpriseHomePanels authenticatedUser={null} />}</WebStory>)
