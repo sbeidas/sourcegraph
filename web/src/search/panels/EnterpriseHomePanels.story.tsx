@@ -1,5 +1,7 @@
 import React from 'react'
 import { EnterpriseHomePanels } from './EnterpriseHomePanels'
+import { of } from 'rxjs'
+import { SearchPatternType } from '../../graphql-operations'
 import { storiesOf } from '@storybook/react'
 import { WebStory } from '../../components/WebStory'
 
@@ -11,4 +13,18 @@ const { add } = storiesOf('web/search/panels/EnterpriseHomePanels', module).addP
     chromatic: { viewports: [480, 1200] },
 })
 
-add('Panels', () => <WebStory>{() => <EnterpriseHomePanels authenticatedUser={null} />}</WebStory>)
+const props = {
+    authenticatedUser: null,
+    patternType: SearchPatternType.literal,
+    fetchRecentSearches: () =>
+        of({
+            totalCount: 2,
+            nodes: [],
+            pageInfo: {
+                endCursor: null,
+                hasNextPage: false,
+            },
+        }),
+}
+
+add('Panels', () => <WebStory>{() => <EnterpriseHomePanels {...props} />}</WebStory>)
